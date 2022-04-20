@@ -2,8 +2,8 @@
   <div>
     <TopLogo/>
     <div class="bgSpotify">
-      <div class="container cardContainer">
-        <div class="row pt-5">
+      <div class="container cardContainer pb-5">
+        <div class="row p-5">
           <CardComp
           v-for="(elm, index) in cardsArray" :key="index"
           :image="elm.poster"
@@ -48,9 +48,6 @@ export default {
 
 <style lang="scss">
 @import "bootstrap/dist/css/bootstrap.min.css";
-.cardContainer{
-  height: calc(100vh - 80px);
-}
 .bgSpotify{
     background-color: #1E2D3B;
 }
