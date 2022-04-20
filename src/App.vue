@@ -1,17 +1,33 @@
 <template>
   <div>
-
+    <TopLogo/>
+    <div class="bgSpotify">
+      <div class="container cardContainer">
+        <div class="row pt-5">
+          <CardComp
+          v-for="(elm, index) in cardsArray" :key="index"
+          :image="elm.poster"
+          :title="elm.title"
+          :author="elm.author"
+          :year="elm.year"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 
+import CardComp from './components/CardComp.vue'
 import axios from 'axios';
+import TopLogo from './components/TopLogo.vue'
 import "bootstrap"
 export default {
   name: 'App',
   components: {
-
+    TopLogo,
+    CardComp,
   },
     data(){
     return{
@@ -32,6 +48,10 @@ export default {
 
 <style lang="scss">
 @import "bootstrap/dist/css/bootstrap.min.css";
-
-
+.cardContainer{
+  height: calc(100vh - 80px);
+}
+.bgSpotify{
+    background-color: #1E2D3B;
+}
 </style>
