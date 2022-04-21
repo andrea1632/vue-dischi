@@ -1,14 +1,24 @@
 <template>
-    <div class="logoContainer">
+    <div class="logoContainer d-flex justify-content-between align-items-center">
         <div class="bg-dark logo p-2">
-            <img src="./../assets/img/logo-small.svg" alt="">
+            <img class="img-fluid rounded-circle" src="./../assets/img/logo-small.svg" alt="">
+        </div>
+        <div>
+            <select v-model="selected" @change="$emit('activeGenre', selected)" class="form-select" name="genere" id="genere">
+                <option>Tutti</option>
+                <option value="rock">Rock</option>
+                <option value="pop">Pop</option>
+                <option value="jazz">Jazz</option>
+                <option value="metal">Metal</option>
+            </select>
         </div>
     </div>
 </template>
 
 <script>
 export default{
-    name: 'TopLogo'
+    name: 'TopLogo',
+    selected: '',
 }
 </script>
 

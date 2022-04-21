@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopLogo/>
+    <TopLogo @activeGenre="changeList"/>
     <div class="bgSpotify">
       <div class="container cardContainer pb-5">
         <div class="row p-5" v-if="cardsArray.length == arrayIndexLength">
@@ -44,10 +44,21 @@ export default {
       this.cardsArray = res.data.response
       this.arrayIndexLength = res.data.response.length
       console.log(this.arrayIndexLength)
+      console.log(this.activeGenre)
     } )
     .catch( (error) => {
      console.log( error )
     } )
+  },
+  computed : {
+    changeList(){
+      if(this.activeGenre == "tutti"){
+        return this.cardsArray
+      }
+      return this.cardsArray.filter((item) =>{
+        return item.genre.includes(this.activeGenre)
+      })
+    }
   }
 }
 </script>

@@ -16,7 +16,7 @@
 <script>
     export default{
         name: 'CardComp',
-        props: ['image', 'title', 'author', 'year']
+        props: ['image', 'title', 'author', 'year',]
     }
 </script>
 
