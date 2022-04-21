@@ -19,7 +19,11 @@
 <script>
 export default{
     name: 'TopLogo',
-    selected: '',
+    data(){
+        return{
+            selected: '',
+        }
+    }
 }
 </script>
 
