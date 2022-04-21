@@ -1,11 +1,11 @@
 <template>
   <div>
-    <TopLogo @activeGenre="changeList"/>
+    <TopLogo @activeGenre="genreSelector"/>
     <div class="bgSpotify">
       <div class="container cardContainer pb-5">
         <div class="row p-5" v-if="cardsArray.length == arrayIndexLength">
           <CardComp
-          v-for="(elm, index) in cardsArray" :key="index"
+          v-for="(elm, index) in changeList" :key="index"
           :image="elm.poster"
           :title="elm.title"
           :author="elm.author"
@@ -36,6 +36,13 @@ export default {
     return{
       cardsArray: [],
       arrayIndexLength: null,
+      selectedGenre: null,
+    }
+  },
+  methods: {
+    genreSelector(genre){
+      this.selectedGenre = genre
+      console.log(this.selectedGenre)
     }
   },
   created(){
@@ -43,8 +50,6 @@ export default {
     .then ( (res)=>{
       this.cardsArray = res.data.response
       this.arrayIndexLength = res.data.response.length
-      console.log(this.arrayIndexLength)
-      console.log(this.activeGenre)
     } )
     .catch( (error) => {
      console.log( error )
@@ -52,11 +57,13 @@ export default {
   },
   computed : {
     changeList(){
-      if(this.activeGenre == "tutti"){
+      if(this.selectedGenre == "tutti"){
         return this.cardsArray
       }
       return this.cardsArray.filter((item) =>{
-        return item.genre.includes(this.activeGenre)
+        return item.genre
+              .toLowerCase()
+              .includes(this.selectedGenre)
       })
     }
   }
