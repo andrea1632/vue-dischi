@@ -36,7 +36,7 @@ export default {
     return{
       cardsArray: [],
       arrayIndexLength: null,
-      selectedGenre: null,
+      selectedGenre: "tutti",
     }
   },
   methods: {
@@ -74,6 +74,7 @@ export default {
 @import "bootstrap/dist/css/bootstrap.min.css";
 .bgSpotify{
     background-color: #1E2D3B;
+    min-height: calc(100vh - 80px);
 }
 .loader{
   width: 80%;

@@ -5,6 +5,7 @@
         </div>
         <div>
             <select v-model="selected" @change="$emit('activeGenre', selected)" class="form-select" name="genere" id="genere">
+                <option disabled selected value> -- select an option -- </option>
                 <option value="tutti">Tutti</option>
                 <option value="rock">Rock</option>
                 <option value="pop">Pop</option>
